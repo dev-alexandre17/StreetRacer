@@ -1,15 +1,17 @@
-class Entity:
+from abc import ABC, abstractmethod
 
-    def __init__(self, x: int, y: int, width: int, height: int, velocity_y: float, velocity_x: float):
-        self.position_x = x
-        self.position_y = y
-        self.width = width
-        self.height = height
-        self.velocity_y = velocity_y
-        self.velocity_x = velocity_x
+import pygame
 
+class Entity(ABC):
+    def __init__(self, name: str, position: tuple, speed: int = 0):  # Adiciona speed como opcional
+        self.name = name
+        self.surface = pygame.image.load(f'asset/{self.name}.png')
+        self.rect = self.surface.get_rect(left=position[0], top=position[1])
+        self.speed = speed  # Usa o valor passado ou 0 por padrão
+
+    @abstractmethod
     def move(self) -> None:
         pass
 
     def draw(self, screen) -> None:
-        pass
+        screen.blit(self.surface, self.rect)

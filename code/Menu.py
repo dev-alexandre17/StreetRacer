@@ -1,7 +1,7 @@
 import pygame.image
 import math
 
-from code.ConstantVariables import WIN_WIDTH, COLOR_BLACK, COLOR_WHITE, MENU_OPTIONS
+from code.ConstantVariables import WIN_WIDTH, COLOR_BLACK, COLOR_WHITE, MENU_OPTIONS, COLOR_YELLOW
 from code.Events import Events
 
 class Menu:
@@ -58,8 +58,8 @@ class Menu:
         self.play_sound()
         while True:
             self.update()
-            self.animated_text("Retro", (self.screen.get_width() // 2, 45), color=COLOR_BLACK)
-            self.animated_text("Journey", (self.screen.get_width() // 2, 115), color=COLOR_BLACK)
+            self.animated_text("Retro", (self.screen.get_width() // 2, 45), color=COLOR_YELLOW)
+            self.animated_text("Journey", (self.screen.get_width() // 2, 115), color=COLOR_YELLOW)
             self.menu_options(MENU_OPTIONS)
             pygame.display.flip()
             Events.handle_events()
